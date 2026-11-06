@@ -1047,6 +1047,339 @@ footer{
   .approach{grid-template-columns:1fr}
   .contact{border-radius:40px}
 }
+
+/* FINAL RESPONSIVE HERO - KEEP PHOTO BESIDE TEXT */
+.hero{
+  overflow:visible;
+}
+.hero-grid{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.12fr) minmax(260px,.88fr) !important;
+  gap:54px !important;
+  align-items:center !important;
+}
+.hero-photo-ratio{
+  align-self:center !important;
+}
+
+/* KPI always stays below the whole hero row */
+.hero-stats-wrap{
+  position:relative;
+  z-index:2;
+  clear:both;
+}
+
+/* Medium screens: keep 2 columns, just reduce portrait */
+@media(max-width:1100px){
+  .hero-grid{
+    grid-template-columns:minmax(0,1.2fr) minmax(230px,.8fr) !important;
+    gap:38px !important;
+  }
+
+  .hero-photo-ratio{
+    width:min(30vw,300px) !important;
+    justify-self:end !important;
+  }
+
+  .hero-stats-wrap{
+    margin-top:34px !important;
+  }
+}
+
+/* Narrow laptop / tablet: still side-by-side */
+@media(max-width:900px){
+  .hero-grid{
+    grid-template-columns:minmax(0,1.3fr) minmax(190px,.7fr) !important;
+    gap:28px !important;
+    align-items:start !important;
+  }
+
+  .hero-copy h1{
+    font-size:clamp(38px,6vw,54px) !important;
+  }
+
+  .hero-copy .lead{
+    font-size:16px !important;
+  }
+
+  .hero-photo-ratio{
+    width:min(27vw,235px) !important;
+    min-width:190px;
+    justify-self:end !important;
+    margin-top:18px !important;
+  }
+
+  .hero-stats-wrap{
+    margin-top:42px !important;
+  }
+
+  .hero-stats-wrap .stats{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:18px 0 !important;
+  }
+
+  .hero-stats-wrap .stat{
+    padding:8px 10px !important;
+  }
+
+  .hero-stats-wrap .stat strong{
+    font-size:20px !important;
+  }
+}
+
+/* Only phones stack; image remains directly under hero text, KPI stays after hero */
+@media(max-width:700px){
+  .hero-grid{
+    grid-template-columns:1fr !important;
+    gap:22px !important;
+  }
+
+  .hero-photo-ratio{
+    width:min(58vw,280px) !important;
+    min-width:0 !important;
+    justify-self:center !important;
+    margin-top:10px !important;
+  }
+
+  .hero-stats-wrap{
+    margin-top:30px !important;
+  }
+
+  .hero-stats-wrap .stats{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:14px 0 !important;
+  }
+
+  .hero-stats-wrap .stat + .stat{
+    border-left:0 !important;
+  }
+
+  .hero-stats-wrap .stat strong{
+    font-size:19px !important;
+  }
+
+  .hero-stats-wrap .stat span{
+    font-size:11px !important;
+  }
+}
+
+
+/* KPI / PORTRAIT COLLISION FIX
+   Between tablet and narrow-laptop widths keep all 5 KPIs on one row.
+   This avoids the 3+2 wrap that visually collides with the portrait. */
+@media (min-width:701px) and (max-width:900px){
+  .hero-stats-wrap{
+    margin-top:46px !important;
+  }
+
+  .hero-stats-wrap .stats{
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    gap:0 !important;
+    align-items:start !important;
+    padding-top:18px !important;
+  }
+
+  .hero-stats-wrap .stat{
+    padding:0 8px !important;
+    min-width:0 !important;
+  }
+
+  .hero-stats-wrap .stat + .stat{
+    border-left:1px solid var(--line) !important;
+  }
+
+  .hero-stats-wrap .stat strong{
+    font-size:18px !important;
+    line-height:1.05 !important;
+    white-space:nowrap !important;
+  }
+
+  .hero-stats-wrap .stat span{
+    font-size:10.5px !important;
+    line-height:1.25 !important;
+    max-width:110px !important;
+    margin-top:5px !important;
+  }
+
+  .hero-photo-ratio{
+    width:min(25vw,220px) !important;
+    min-width:175px !important;
+    margin-top:22px !important;
+  }
+}
+
+/* On phones the image stays with the hero, KPI remain below the complete hero block. */
+@media (max-width:700px){
+  .hero-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  .hero-photo-ratio{
+    width:min(56vw,270px) !important;
+    min-width:0 !important;
+    justify-self:center !important;
+    margin-top:18px !important;
+  }
+
+  .hero-stats-wrap{
+    margin-top:38px !important;
+  }
+}
+
+
+
+/* ABOUT PHOTO RESPONSIVE FIX */
+.about-visual{
+  min-height:clamp(280px, 36vw, 380px) !important;
+}
+.about-blob{
+  inset:12px 12px 12px 0;
+}
+.about-photo{
+  width:min(72%, 360px) !important;
+  aspect-ratio:1 / 1;
+  left:50% !important;
+  transform:translateX(-50%);
+  bottom:0;
+  overflow:hidden;
+}
+.about-photo img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+
+@media (max-width:1100px){
+  .about{
+    grid-template-columns:minmax(240px,.86fr) minmax(0,1.14fr) !important;
+    gap:46px !important;
+    align-items:center !important;
+  }
+  .about-visual{
+    min-height:320px !important;
+  }
+  .about-photo{
+    width:min(74%, 320px) !important;
+  }
+}
+
+@media (max-width:900px){
+  .about{
+    grid-template-columns:1fr !important;
+    gap:30px !important;
+  }
+  .about-visual{
+    min-height:300px !important;
+    width:min(100%, 360px);
+    margin:0 auto;
+  }
+  .about-blob{
+    inset:10px 0 10px 0 !important;
+  }
+  .about-photo{
+    width:min(72vw, 300px) !important;
+  }
+}
+
+@media (max-width:620px){
+  .about-visual{
+    min-height:260px !important;
+    width:min(100%, 320px);
+  }
+  .about-photo{
+    width:min(78vw, 260px) !important;
+  }
+}
+
+
+
+/* ABOUT SECTION VERTICAL GAP FIX */
+@media (min-width:901px){
+  #o-mne.section{
+    padding-top:46px !important;
+  }
+}
+
+@media (max-width:900px){
+  #o-mne.section{
+    padding-top:34px !important;
+  }
+  .about{
+    gap:18px !important;
+  }
+  .about-visual{
+    min-height:245px !important;
+  }
+  .about-photo{
+    bottom:auto !important;
+    top:0 !important;
+  }
+  .about-blob{
+    top:0 !important;
+    bottom:auto !important;
+    height:245px !important;
+  }
+}
+
+@media (max-width:620px){
+  #o-mne.section{
+    padding-top:26px !important;
+  }
+  .about-visual{
+    min-height:225px !important;
+  }
+  .about-blob{
+    height:225px !important;
+  }
+}
+
+
+
+/* ABOUT MOBILE/TABLET OVERLAP FIX */
+@media (max-width:900px){
+  #o-mne.section{
+    padding-top:18px !important;
+  }
+  .about{
+    gap:18px !important;
+  }
+  .about-visual{
+    width:min(100%,360px) !important;
+    min-height:310px !important;
+    height:310px !important;
+    margin:0 auto !important;
+  }
+  .about-photo{
+    width:min(72vw,300px) !important;
+    aspect-ratio:1 / 1 !important;
+    top:0 !important;
+    bottom:auto !important;
+  }
+  .about-blob{
+    top:0 !important;
+    bottom:auto !important;
+    height:310px !important;
+  }
+}
+
+@media (max-width:620px){
+  #o-mne.section{
+    padding-top:14px !important;
+  }
+  .about-visual{
+    width:min(100%,320px) !important;
+    min-height:270px !important;
+    height:270px !important;
+  }
+  .about-photo{
+    width:min(78vw,260px) !important;
+  }
+  .about-blob{
+    height:270px !important;
+  }
+}
+
 </style>
 </head>
 
